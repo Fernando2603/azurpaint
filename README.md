@@ -18,7 +18,7 @@ Simple example to extract painting
 
 - create new folder
 - get and extract `/Android/obb/com.YoStarEN.AzurLane/*.obb` to new folder
-- copy-paste `AssetBundles` from `/Android/data/com.YoStarEN.AzurLane/files/AssetBundles`
+- copy `AssetBundles` from `/Android/data/com.YoStarEN.AzurLane/files/AssetBundles`
 
 > [!NOTE]
 > only `painting`, `paintings` and `paintingface` folder are required from `AssetBundles`.
