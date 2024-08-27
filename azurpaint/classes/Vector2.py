@@ -167,14 +167,18 @@ class Vector2:
       return Vector2(x=value[0], y=value[1])
 
     # any class or object that have x and y value
-    has_x = hasattr(value, 'x') or hasattr(value, 'X')
-    has_y = hasattr(value, 'y') or hasattr(value, 'Y')
+    has_x = hasattr(value, 'x') or hasattr(value, 'X') or ('x' in value) or ('X' in value)
+    has_y = hasattr(value, 'y') or hasattr(value, 'Y') or ('y' in value) or ('Y' in value)
 
     if not has_x or not has_y:
       raise ValueError(f"'{value}' cannot be converted into Vector2.")
 
-    value_x = getattr(value, 'x', getattr(value, 'X', None))
-    value_y = getattr(value, 'y', getattr(value, 'Y', None))
+    if isinstance(value, dict):
+      value_x = value.get('x', value.get('X', None))
+      value_y = value.get('y', value.get('Y', None))
+    else:
+      value_x = getattr(value, 'x', getattr(value, 'X', None))
+      value_y = getattr(value, 'y', getattr(value, 'Y', None))
 
     if value_x == None: raise ValueError("value 'x' is None, expected int or float.")
     if value_y == None: raise ValueError("value 'y' is None, expected int or float.")
