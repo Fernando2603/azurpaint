@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "azurpaint"
+authors = [{ name = "Fernando", email = "81207411+Fernando2603@users.noreply.github.com" }]
+description = "Azur Lane painting reconstructor/extractor."
+readme = { file = "README.md", content-type = "text/markdown"}
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+keywords = [
+  "python",
+  "unity",
+  "azurlane",
+  "azur-lane",
+  "extractor",
+]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Games/Entertainment",
+  "Topic :: Multimedia :: Graphics",
+]
+dependencies = [
+  "Pillow",
+  "UnityPy == 1.10.6"
+]
+dynamic = ["version"]
+
+[project.urls]
+"Homepage" = "https://github.com/Fernando2603/azurpaint"
+"Bug Tracker" = "https://github.com/Fernando2603/azurpaint/issues"
+
+[tool.setuptools.dynamic]
+version = { attr = "azurpaint.__version__" }

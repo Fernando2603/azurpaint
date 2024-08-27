@@ -11,10 +11,12 @@ class Vector2:
 
   def __init__(self, x: Union[int, float], y: Union[int, float]) -> None:
     if not self._typecheck(x):
-      raise TypeError(f"Invalid type for Vector2.x: '{type(x)}', expected int or float.")
+      raise TypeError(
+        f"Invalid type for {self.__class__.__name__}.x: '{type(x)}', expected int or float.")
 
     if not self._typecheck(y):
-      raise TypeError(f"Invalid type for Vector2.y: '{type(y)}', expected int or float.")
+      raise TypeError(
+        f"Invalid type for {self.__class__.__name__}.y: '{type(y)}', expected int or float.")
 
     self.x = float(x)
     self.y = float(y)
