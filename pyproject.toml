@@ -31,7 +31,7 @@ classifiers = [
 ]
 dependencies = [
   "Pillow",
-  "UnityPy == 1.10.6"
+  "UnityPy == 1.10.18"
 ]
 dynamic = ["version"]
 
