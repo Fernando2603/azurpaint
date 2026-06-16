@@ -34,7 +34,15 @@ class MeshImage:
         f"MonoBehaviour not found in <GameObject name={gameobject.m_Name}>"
       )
 
-    script_reader = self.MonoBehaviour.m_Script.deref()
+    # default value
+    self.Sprite = None
+    self.Mesh = None
+    self.image = None
+
+    try:
+      script_reader = self.MonoBehaviour.m_Script.deref()
+    except FileNotFoundError:
+      return
 
     if not script_reader:
       raise MeshImageNotFound(f"Script link missing in <GameObject name={gameobject.m_Name}>.")
@@ -43,11 +51,6 @@ class MeshImage:
 
     if script_name not in ("MeshImage", "Image"):
       raise MeshImageNotFound(f"MeshImage not found in <GameObject name={gameobject.m_Name}>.")
-
-    # default value
-    self.Sprite = None
-    self.Mesh = None
-    self.image = None
 
     if gameobject.m_Name == "face":
       self.load_face(expression="0")
@@ -129,6 +132,9 @@ class MeshImage:
       return None
 
     if not isinstance(self.MonoBehaviour.mMesh, classes.PPtr):  # type: ignore
+      return None
+
+    if self.MonoBehaviour.mMesh.m_PathID == 0:
       return None
 
     mesh_reader = self.MonoBehaviour.mMesh.deref()  # type: ignore
