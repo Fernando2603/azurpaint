@@ -30,8 +30,8 @@ classifiers = [
   "Topic :: Multimedia :: Graphics",
 ]
 dependencies = [
-  "Pillow",
-  "UnityPy == 1.10.18"
+  "pillow",
+  "unitypy==1.25.0"
 ]
 dynamic = ["version"]
 
@@ -41,3 +41,39 @@ dynamic = ["version"]
 
 [tool.setuptools.dynamic]
 version = { attr = "azurpaint.__version__" }
+
+[tool.pyright]
+pythonVersion = "3.12"
+typeCheckingMode = "strict"
+
+strictListInference = true
+strictDictionaryInference = true
+strictSetInference = true
+analyzeUnannotatedFunctions = true
+strictParameterNoneValue = true
+enableTypeIgnoreComments = true
+enableReachabilityAnalysis = true
+deprecateTypingAliases = true
+useLibraryCodeForTypes = true
+reportMissingTypeStubs = false
+
+[tool.ruff]
+line-length = 100
+indent-width = 2
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+  "E",
+  "F",
+  "I",
+  "UP",
+  "B",
+  "SIM",
+  "C4",
+  "RUF",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
