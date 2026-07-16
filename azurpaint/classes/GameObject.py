@@ -190,6 +190,10 @@ class GameObject:
         continue
 
       child_object = child_object_reader.parse_as_object()
+
+      if "shophx" in child_object.m_Name:
+        continue
+
       object_layer = GameObject(
         reader=self.reader,
         gameobject=child_object,  # type: ignore
