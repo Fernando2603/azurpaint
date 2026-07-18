@@ -48,7 +48,7 @@ class AssetReader:
       if obj.type != ClassIDType.GameObject:
         continue
 
-      if obj.peek_name() != self.prefab.stem:  # type: ignore
+      if obj.peek_name().lower() != self.prefab.stem.lower():  # type: ignore
         continue
 
       gameobject = cast(classes.GameObject, obj.parse_as_object())
